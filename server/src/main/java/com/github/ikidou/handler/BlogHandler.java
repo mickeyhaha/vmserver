@@ -42,6 +42,7 @@ public enum BlogHandler implements Route {
     GET {
         @Override
         public Object handle(Request request, Response response) throws Exception {
+        	System.out.println("Get requested...");
             long id = getId(request);
             Object result;
             long page = 1L;

@@ -51,6 +51,8 @@ public enum VmCallbackHandler implements Route {
 
             resp.count = 1;
             resp.page = 1;
+            
+            ContextHolder.paid = false;
 
             return resp;
         }

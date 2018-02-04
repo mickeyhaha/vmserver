@@ -22,6 +22,7 @@ import com.github.ikidou.db.DB;
 import com.github.ikidou.handler.BlogHandler;
 import com.github.ikidou.handler.FormHandler;
 import com.github.ikidou.handler.HeaderHandler;
+import com.github.ikidou.handler.PayHandler;
 import com.github.ikidou.handler.RfidHandler;
 import com.github.ikidou.handler.VmCallbackHandler;
 import com.github.ikidou.handler.VmHandler;
@@ -43,10 +44,14 @@ public class RESTServer {
         Spark.port(9000);
         Spark.init();
         
-        
-        Spark.get("/vm/put", VmHandler.PUT, GsonTransformer.getDefault());
+        //send cmd to vm
+        Spark.get("/vm/cmd", VmHandler.PUT, GsonTransformer.getDefault());
         //vm callback to put the RFID list
         Spark.get("/vmcallback/:rfids", VmCallbackHandler.GET, GsonTransformer.getDefault());
+        //get pay result
+        Spark.get("/pay/result", PayHandler.GET, GsonTransformer.getDefault());
+        //set paid/unpaid for id   /pay/paid?status=1
+        Spark.get("/pay/paid", PayHandler.PUT, GsonTransformer.getDefault());
 
         Spark.get("/bussiness/v1/download/newest/rfid_edition", RfidHandler.GET, GsonTransformer.getDefault());
 

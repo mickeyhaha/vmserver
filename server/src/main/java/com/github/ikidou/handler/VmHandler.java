@@ -78,7 +78,7 @@ public enum VmHandler implements Route {
         }
     },
 
-    //open
+    //send cmd
     PUT {
         @Override
         public Object handle(Request request, Response response) throws Exception {

@@ -1,0 +1,1 @@
+ scp vmserver.jar root@118.25.44.225:~
